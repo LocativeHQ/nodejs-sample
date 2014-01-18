@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 GeofancyJS
+  p Welcome to the GeofancyJS Sample Application
+  if error
+    h2 #{error}
+  if authorizeUrl
+    p Click 
+      a(href='#{authorizeUrl}') here to authorize
+  if fencelogs
+    table
+      tr
+        th(style='width: 250px') Time
+        th(style='width: 250px') Response Code
+        th Response
+      each fencelog in fencelogs
+        tr
+          td(style='width: 250px') #{fencelog.created_at}
+          td(style='width: 250px') #{fencelog.httpResponseCode}
+          td #{fencelog.httpResponse}
+
